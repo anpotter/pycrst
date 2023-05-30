@@ -1,17 +1,21 @@
-## Bottomup
-# v9.1b cleanup baseline
+## pycrst 1.0
+## An Algorithm for Pythonizing Rhetorical Structures
+## Andrew Potter
+## 5/30/2023
 
-from inspect import currentframe
-import xml.etree.ElementTree as ET
-import re
-from pcpp import pcpp
-debugging = False
 '''
 Assumptions, limitations, caveats
 Hyphenated relation names are converted to snake format.
 It is assumed that every text will contain at least one relation.
 '''
 
+from inspect import currentframe
+import xml.etree.ElementTree as ET
+import re
+from pcpp import pcpp
+debugging = False
+
+# Uncomment input file of interest
 # selected standards
 #rstFile = './rstFiles/australianmining.rs3'
 #rstFile = './rstFiles/doixin.rs3'
@@ -24,7 +28,6 @@ It is assumed that every text will contain at least one relation.
 #rstFile = './rstFiles/unlazy.rs3'
 #rstFile = './rstFiles/zpg.rs3' # discontinuity OK, see unconnected segs 1-4
 
-
 # STS Corpus
 #rstFile = './rstFiles/sts corpus/STS-Nov-M133-Fuller.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M148-Lynch.rs3'
@@ -32,7 +35,7 @@ It is assumed that every text will contain at least one relation.
 #rstFile = './rstFiles/sts corpus/STS-Nov-M149-Hakken.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M134a-Hakken.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M150-Fuller.rs3'
-#rstFile = './rstFiles/sts corpus/STS-Nov-M135-Traweek.rs3'
+rstFile = './rstFiles/sts corpus/STS-Nov-M135-Traweek.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M151-Holmes.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M136-Lynch.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M152-Shapiro.rs3'
@@ -57,6 +60,9 @@ It is assumed that every text will contain at least one relation.
 #rstFile = './rstFiles/sts corpus/STS-Nov-M147-Schmaus.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Oct-M9-Baxter.rs3'
 
+# selected
+#rstFile = './rstFiles/GUM/GUM_news_worship.rs3'
+#rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
 
 ##################################################################
 ## relational proposition, generally known as rp
