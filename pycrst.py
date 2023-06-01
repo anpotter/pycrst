@@ -16,7 +16,8 @@ from pcpp import pcpp
 debugging = False
 
 # Uncomment input file of interest
-# selected standards
+# selected classics
+rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/australianmining.rs3'
 #rstFile = './rstFiles/doixin.rs3'
 #rstFile = './rstFiles/emeritiCommittee.rs3'
@@ -35,7 +36,7 @@ debugging = False
 #rstFile = './rstFiles/sts corpus/STS-Nov-M149-Hakken.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M134a-Hakken.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M150-Fuller.rs3'
-rstFile = './rstFiles/sts corpus/STS-Nov-M135-Traweek.rs3'
+#rstFile = './rstFiles/sts corpus/STS-Nov-M135-Traweek.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M151-Holmes.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M136-Lynch.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M152-Shapiro.rs3'
@@ -60,7 +61,7 @@ rstFile = './rstFiles/sts corpus/STS-Nov-M135-Traweek.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M147-Schmaus.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Oct-M9-Baxter.rs3'
 
-# selected
+# selected GUM
 #rstFile = './rstFiles/GUM/GUM_news_worship.rs3'
 #rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
 
@@ -141,7 +142,7 @@ def gen_exp(rp):
             else:
                 exp = format_rp(rp.rel, nuc_exp, rp.nuc)
 
-    elif is_segment(rp):           
+    elif is_segment(rp):
         if get_sat_count(rp) > 1:
             exp = converge(rp)
         else:
