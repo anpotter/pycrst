@@ -64,7 +64,9 @@ rstFile = './rstFiles/ccletter.rs3'
 # selected GUM
 #rstFile = './rstFiles/GUM/GUM_news_worship.rs3'
 #rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
-
+rstFile = './Bottomup/rstFiles/GUM/GUM_voyage_fortlee_a.rs3',
+            # orig has bad connection see 43-60
+            
 ##################################################################
 ## relational proposition, generally known as rp
 class RelProp:
