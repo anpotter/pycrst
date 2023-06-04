@@ -284,15 +284,13 @@ def sort_nucs(nuc_exp_lst):
         temp = re.findall(r'\d+', exp)
         mn_dict[int(temp[0])] = exp
 
-    myKeys = list(mn_dict.keys())
-    myKeys.sort()
+    myKeys = sorted(list(mn_dict.keys()))
     mn_dict = {i: mn_dict[i] for i in myKeys}
 
     nuc_exp_lst = []
     for key in myKeys:
         nuc_exp_lst.append(mn_dict.get(key))
 
-    debug(nuc_exp_lst)
     return nuc_exp_lst
 
 ########################################
