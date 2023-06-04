@@ -17,7 +17,7 @@ debugging = False
 
 # Uncomment input file of interest
 # selected classics
-rstFile = './rstFiles/ccletter.rs3'
+#rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/australianmining.rs3'
 #rstFile = './rstFiles/doixin.rs3'
 #rstFile = './rstFiles/emeritiCommittee.rs3'
@@ -27,10 +27,10 @@ rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/thumbsextended.rs3'
 #rstFile = './rstFiles/truebrit.rs3'
 #rstFile = './rstFiles/unlazy.rs3'
-#rstFile = './rstFiles/zpg.rs3' # discontinuity OK, see unconnected segs 1-4
+rstFile = './rstFiles/zpg.rs3' # discontinuity OK, see unconnected segs 1-4
 
 # STS Corpus
-#rstFile = './rstFiles/sts corpus/STS-Nov-M133-Fuller.rs3'
+rstFile = './rstFiles/sts corpus/STS-Nov-M133-Fuller.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M148-Lynch.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M134-Herkert.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M149-Hakken.rs3'
@@ -64,8 +64,8 @@ rstFile = './rstFiles/ccletter.rs3'
 # selected GUM
 #rstFile = './rstFiles/GUM/GUM_news_worship.rs3'
 #rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
-rstFile = './Bottomup/rstFiles/GUM/GUM_voyage_fortlee_a.rs3',
-            # orig has bad connection see 43-60
+#rstFile = './rstFiles/GUM/GUM_voyage_fortlee_a.rs3'
+                    # orig has bad connection see spans 43-60, fixed here
             
 ##################################################################
 ## relational proposition, generally known as rp
@@ -169,6 +169,7 @@ def gen_exp(rp):
             else:
                 nuc_exp_lst.append(n.sat)
 
+        nuc_exp_lst = sort_nucs(nuc_exp_lst)
         exp = '{}({})'.format(nucs[0].rel, ','.join(nuc_exp_lst))
         
         mn_sats = get_mn_sats(rp)   # get sats for mn, if any
@@ -273,6 +274,25 @@ def get_mn_sats(rp):
         if not is_multi_rel(child): 
             mn_sats.append(child)
     return mn_sats
+
+########################################
+# Sort the nucs in multinuclear expression
+def sort_nucs(nuc_exp_lst):
+
+    mn_dict = {}
+    for exp in nuc_exp_lst:
+        temp = re.findall(r'\d+', exp)
+        mn_dict[temp[0]] = exp
+
+    myKeys = list(mn_dict.keys())
+    myKeys.sort()
+    mn_dict = {i: mn_dict[i] for i in myKeys}
+
+    nuc_exp_lst = []
+    for key in myKeys:
+        nuc_exp_lst.append(mn_dict.get(key))
+    
+    return nuc_exp_lst
 
 ########################################
 # get the nucleus associated with an rp
