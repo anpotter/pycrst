@@ -17,7 +17,7 @@ debugging = False
 
 # Uncomment input file of interest
 # selected classics
-#rstFile = './rstFiles/ccletter.rs3'
+rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/australianmining.rs3'
 #rstFile = './rstFiles/doixin.rs3'
 #rstFile = './rstFiles/emeritiCommittee.rs3'
@@ -27,10 +27,10 @@ debugging = False
 #rstFile = './rstFiles/thumbsextended.rs3'
 #rstFile = './rstFiles/truebrit.rs3'
 #rstFile = './rstFiles/unlazy.rs3'
-rstFile = './rstFiles/zpg.rs3' # discontinuity OK, see unconnected segs 1-4
+#rstFile = './rstFiles/zpg.rs3' # discontinuity OK, see unconnected segs 1-4
 
 # STS Corpus
-rstFile = './rstFiles/sts corpus/STS-Nov-M133-Fuller.rs3'
+#rstFile = './rstFiles/sts corpus/STS-Nov-M133-Fuller.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M148-Lynch.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M134-Herkert.rs3'
 #rstFile = './rstFiles/sts corpus/STS-Nov-M149-Hakken.rs3'
@@ -282,7 +282,7 @@ def sort_nucs(nuc_exp_lst):
     mn_dict = {}
     for exp in nuc_exp_lst:
         temp = re.findall(r'\d+', exp)
-        mn_dict[temp[0]] = exp
+        mn_dict[int(temp[0])] = exp
 
     myKeys = list(mn_dict.keys())
     myKeys.sort()
@@ -291,7 +291,8 @@ def sort_nucs(nuc_exp_lst):
     nuc_exp_lst = []
     for key in myKeys:
         nuc_exp_lst.append(mn_dict.get(key))
-    
+
+    debug(nuc_exp_lst)
     return nuc_exp_lst
 
 ########################################
