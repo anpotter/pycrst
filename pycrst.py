@@ -1,7 +1,7 @@
 ## pycrst 1.0
 ## An Algorithm for Pythonizing Rhetorical Structures
 ## Andrew Potter
-## 5/30/2023
+## 6/8/2023
 
 '''
 Assumptions, limitations, caveats
@@ -12,6 +12,7 @@ It is assumed that every text will contain at least one relation.
 from inspect import currentframe
 import xml.etree.ElementTree as ET
 import re
+import sys
 from pcpp import pcpp
 debugging = False
 
@@ -123,6 +124,7 @@ def initialize(rstFile):
 # Transform RST to RP 
 
 def gen_exp(rp):
+    
     if is_top(rp) and is_span_type(rp):
         return gen_exp(get_nuc(rp.sat))
         
@@ -356,8 +358,7 @@ def check_continuity(exp):
 def span_check(exp):
     return 'span' in exp
 
-########################################
-    
+########################################    
 # run it
 top = initialize(rstFile)
 exp = gen_exp(top)
@@ -373,3 +374,20 @@ if span_check(exp):
     print("Span check error")
 else:
     print("Span check OK")
+
+
+########################################    
+# Generate stub functions for each relation used in analysis
+def get_rel_name(argv):
+    return sys._getframe(1).f_code.co_name
+
+def gen_stubs():
+    rellist = []
+    for rp in rplist:
+        rellist.append(rp.rel)
+    rellist = sorted(list(set(rellist)))
+    for rel in rellist:
+        if rel and rel != 'span' and rel != 'top': 
+            print('def {}(*argv): return get_rel_name(argv), argv'.format(rel))
+
+gen_stubs()
