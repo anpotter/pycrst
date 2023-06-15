@@ -42,10 +42,10 @@ for California Common  Cause.</segment>
     <segment id="2" parent="3" relname="concession"> 2) Tempting as it may be,</segment>
     <segment id="3" parent="19" relname="span"> 3) we shouldn&apos;t 
 embrace every popular issue that comes along.</segment>
-    <segment id="4" parent="17" relname="condition"> 4) When we do so,</segment>
-    <segment id="5" parent="17" relname="span">  
+    <segment id="4" parent="15" relname="condition"> 4) When we do so,</segment>
+    <segment id="5" parent="15" relname="contrast">  
 5) we use precious, limited resources</segment>
-    <segment id="6" parent="5" relname="circumstance"> 6) where other players with superior 
+    <segment id="6" parent="15" relname="contrast"> 6) where other players with superior 
 resources are already doing an adequate job. </segment>
     <segment id="7" parent="21" relname="span"> 7) Rather, I think we will be 
 stronger and more effective </segment>
@@ -78,7 +78,7 @@ nuclear freeze initiative.
 <group id="8" type="span" parent="1" relname="evidence" />
 <group id="29" type="span" parent="13" relname="antithesis" />
 <group id="25" type="span" parent="23" relname="evidence" />
-<group id="17" type="span" parent="18" relname="span" />
-<group id="18" type="span" parent="19" relname="evidence" />
+<group id="15" type="multinuc" parent="17" relname="span" />
+<group id="17" type="span" parent="19" relname="evidence" />
   </body>
 </rst>
