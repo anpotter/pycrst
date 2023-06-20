@@ -52,7 +52,7 @@ SCAREDY CAT, SCAREDY CAT..., however, are hardly likely to win
 moderate and liberal scientists to STS.</segment>
     <segment id="6" parent="10" relname="span"> It seems to me that the way to
 proceed is to challenge science instead of provoking it.</segment>
-<group id="7" type="span" parent="3" relname="elaboration" />
+<group id="7" type="span" parent="3" relname="evidence" />
 <group id="8" type="span" parent="6" relname="solutionhood" />
 <group id="9" type="span" parent="3" relname="concession" />
 <group id="10" type="span" />

@@ -39,10 +39,10 @@
     </relations>
   </header>
   <body>
-    <segment id="1" parent="2" relname="background">
+    <segment id="1" parent="3" relname="span">
 
-The remarks by Fuller suggest that</segment>
-    <segment id="2" parent="3" relname="span"> Rosenberg was right in titling his 1976 
+The remarks by Fuller suggest that Rosenberg was right</segment>
+    <segment id="2" parent="1" relname="elaboration"> in titling his 1976 
 book on the history of science, NO OTHER GODS.</segment>
 <group id="3" type="span" />
   </body>

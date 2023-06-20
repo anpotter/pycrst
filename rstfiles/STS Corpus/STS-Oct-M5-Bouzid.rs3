@@ -64,7 +64,7 @@ to react. </segment>
     <segment id="4" parent="30" relname="span"> If we decide to take seriously such rabid and blind 
 criticism of STS work as the one fully illustrated in Gross &amp; Levitt&apos;s 
 work (_Higher Superstition_),</segment>
-    <segment id="5" parent="31" relname="span"> then we are pretty much setting 
+    <segment id="5" parent="34" relname="span"> then we are pretty much setting 
 ourselves up and letting our detractors decide our agenda for
 us. </segment>
     <segment id="6" parent="27" relname="span"> For one thing, these people have absolutely no interest
@@ -114,9 +114,10 @@ layer of elite scientists.</segment>
 <group id="27" type="span" parent="5" relname="evidence" />
 <group id="28" type="span" parent="3" relname="antithesis" />
 <group id="29" type="span" parent="4" relname="background" />
-<group id="30" type="span" parent="5" relname="condition" />
+<group id="30" type="span" parent="34" relname="condition" />
 <group id="31" type="span" parent="33" relname="span" />
 <group id="32" type="span" parent="31" relname="summary" />
 <group id="33" type="span" />
+<group id="34" type="span" parent="31" relname="span" />
   </body>
 </rst>
