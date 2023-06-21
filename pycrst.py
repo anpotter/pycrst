@@ -17,7 +17,7 @@ from pcpp import pcpp
 debugging = False
 
 # Uncomment input file of interest
-# selected classics
+# selected classics and miscellaneous
 rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/australianmining.rs3'
 #rstFile = './rstFiles/doixin.rs3'
@@ -29,6 +29,7 @@ rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/truebrit.rs3'
 #rstFile = './rstFiles/unlazy.rs3'
 #rstFile = './rstFiles/zpg.rs3' # discontinuity OK, see unconnected segs 1-4
+#rstFile = './rstFiles/Gettysburg Address.rs3'
 
 # STS Corpus
 #rstFile = './rstFiles/sts corpus/STS-Nov-M133-Fuller.rs3'
