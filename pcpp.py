@@ -1,6 +1,4 @@
 # Pretty crummy pretty print for relational propositions
-# print either the rp or the logical function
-
 
 "Not lazy"
 #exp ='background(volitional-result(1,circumstance(3,2)),evidence(concession(5,antithesis(7,6)),4))'
