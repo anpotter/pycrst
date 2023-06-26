@@ -2,9 +2,11 @@
 ## An Algorithm for Pythonizing Rhetorical Structures
 ## Andrew Potter
 ## 6/8/2023
-
 '''
-Assumptions, limitations, caveats
+Current reference if citing this work:
+Potter, A. (Accepted). An algorithm for pythonizing rhetorical structures. In DiSLiDaS 2023. 
+
+Some assumptions, limitations, caveats
 Hyphenated relation names are converted to snake format.
 It is assumed that every text will contain at least one relation.
 '''
@@ -67,7 +69,7 @@ rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/GUM/GUM_news_worship.rs3'
 #rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
 #rstFile = './rstFiles/GUM/GUM_voyage_fortlee_a.rs3'
-                    # orig has bad connection see spans 43-60, fixed here
+                    # orig GUM_voyage_fortlee has bad connection see spans 43-60, fixed here
             
 ##################################################################
 ## relational proposition, generally known as rp
@@ -368,27 +370,9 @@ print()
 print(__file__)
 print(rstFile)
 print(pcpp(exp))
-
 print()
 if check_continuity(exp): print('Continuity complete')
 if span_check(exp):
     print("Span check error")
 else:
     print("Span check OK")
-
-
-########################################    
-# Generate stub functions for each relation used in analysis
-def get_rel_name(argv):
-    return sys._getframe(1).f_code.co_name
-
-def gen_stubs():
-    rellist = []
-    for rp in rplist:
-        rellist.append(rp.rel)
-    rellist = sorted(list(set(rellist)))
-    for rel in rellist:
-        if rel and rel != 'span' and rel != 'top': 
-            print('def {}(*argv): return get_rel_name(argv), argv'.format(rel))
-
-gen_stubs()
