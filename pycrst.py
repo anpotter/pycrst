@@ -67,6 +67,7 @@ rstFile = './rstFiles/ccletter.rs3'
 
 # selected GUM
 #rstFile = './rstFiles/GUM/GUM_news_worship.rs3'
+#rstFile = './rstFiles/GUM/GUM_news_worship_2.rs3'
 #rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
 #rstFile = './rstFiles/GUM/GUM_voyage_fortlee_a.rs3'
                     # orig GUM_voyage_fortlee has bad connection see spans 43-60, fixed here
