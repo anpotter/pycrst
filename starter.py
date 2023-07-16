@@ -1,4 +1,6 @@
-# relational proposition as code
+# relational proposition as tuple
+# hello world
+
 import sys
 
 def debug(*arg):
