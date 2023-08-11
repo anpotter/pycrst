@@ -218,7 +218,10 @@ top = None
 multinucs = []
 
 ########################################
-# handle convergence of multiple sats on a common nucleus
+# handle convergence of multiple sats on a common nucleus.
+# Implementation of convergence is incomplete and the source of known bugs.
+# These are being address in an upcoming release
+
 def converge(rp):
     children = get_children(rp)
     nucexp = None
