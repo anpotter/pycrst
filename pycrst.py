@@ -2,6 +2,7 @@
 ## An Algorithm for Pythonizing Rhetorical Structures
 ## Andrew Potter
 ## 6/8/2023
+## 8/14/2023 bug fixes, integration of convergence into main function
 '''
 Current reference if citing this work:
 Potter, A. (Accepted). An algorithm for pythonizing rhetorical structures. In DiSLiDaS 2023. 
@@ -9,6 +10,8 @@ Potter, A. (Accepted). An algorithm for pythonizing rhetorical structures. In Di
 Some assumptions, limitations, caveats
 Hyphenated relation names are converted to snake format.
 It is assumed that every text will contain at least one relation.
+Some discontinuitites and span anomalies are detected.
+Input files must be on local drive in rstfiles subfolder.
 '''
 
 from inspect import currentframe
@@ -22,7 +25,7 @@ debugging = False
 # selected classics and miscellaneous
 rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/australianmining.rs3'
-#rstFile = './rstFiles/doixin.rs3'
+#rstFile = './rstFiles/dioxin.rs3'
 #rstFile = './rstFiles/emeritiCommittee.rs3'
 #rstFile = './rstFiles/musicdayannouncement.rs3'
 #rstFile = './rstFiles/syncom.rs3'
@@ -69,9 +72,7 @@ rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/GUM/GUM_news_worship.rs3'
 #rstFile = './rstFiles/GUM/GUM_news_worship_2.rs3'
 #rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
-#rstFile = './rstFiles/GUM/GUM_voyage_fortlee_a.rs3'
-                    # orig GUM_voyage_fortlee has bad connection see spans 43-60, fixed here
-            
+          
 ##################################################################
 ## relational proposition, generally known as rp
 class RelProp:
@@ -124,6 +125,7 @@ def initialize(rstFile):
     rplist = renumber(rplist)
     return top
 
+
 ########################################
 # Transform RST to RP 
 
@@ -133,8 +135,26 @@ def gen_exp(rp):
         return gen_exp(get_nuc(rp.sat))
         
     elif is_span_type(rp):
-        if get_sat_count(rp) > 1:
-            exp = converge(rp)
+        
+        if get_sat_count(rp) > 1:   # converge
+            nuc_exp = gen_exp(get_span_nuc(rp))
+            exp_list = []
+            children = get_children(rp)
+            for child in children:
+                if child.rel != 'span':
+                    if child.type == 'span':
+                        child.nuc = nuc_exp
+                        exp_list.append(gen_exp(child))
+                    elif child.type == 'multinuc':
+                        child.nuc = nuc_exp
+                        exp_list.append(format_rp(child.rel, gen_exp(child), child.nuc))
+                    elif child.type == 'segment':
+                        child.nuc = nuc_exp
+                        exp_list.append(format_rp(child)) 
+                
+            exp = 'convergence(' + ','.join(exp_list) + ')'
+            debug(pcpp(exp))
+
         else:
             nuc_exp = gen_exp(get_span_nuc(rp))
             sat = get_sat(rp)
@@ -151,8 +171,19 @@ def gen_exp(rp):
                 exp = format_rp(rp.rel, nuc_exp, rp.nuc)
 
     elif is_segment(rp):
-        if get_sat_count(rp) > 1:
-            exp = converge(rp)
+        if get_sat_count(rp) > 1:   # converge
+            exp_list = []
+            children = get_children(rp)
+            for child in children:
+                if child.type == 'multinuc':
+                    exp = format_rp(child.rel, gen_exp(child), child.nuc)
+                elif child.type == 'span':
+                    exp = gen_exp(child)
+                else:
+                    exp = format_rp(child)
+                exp_list.append(exp)
+            exp = 'convergence(' + ','.join(exp_list) + ')'
+            debug(pcpp(exp))
         else:
             sat = get_sat(rp)
             if not sat:
@@ -163,9 +194,9 @@ def gen_exp(rp):
                 exp = gen_exp(sat)
 
     elif is_multi_type(rp):
-        nucs = get_mn_nucs(rp)
+        nucs = get_mn_nucs(rp)       
         nuc_exp_lst = []            # create list of nuclei rps
-        for n in nucs:            
+        for n in nucs:
             if is_span_type(n):
                 exp = gen_exp(get_children(n)[0])
                 nuc_exp_lst.append(exp)
@@ -179,6 +210,7 @@ def gen_exp(rp):
         exp = '{}({})'.format(nucs[0].rel, ','.join(nuc_exp_lst))
         
         mn_sats = get_mn_sats(rp)   # get sats for mn, if any
+        
         if len(mn_sats) == 1:
             mn_sats[0].nuc = exp
             if is_segment(mn_sats[0]):
@@ -188,15 +220,22 @@ def gen_exp(rp):
                 if not is_span_type(mn_sats[0]):
                     mn_sats[0].sat = exp
                     exp = format_rp(mn_sats[0])
-        elif len(mn_sats) > 1:
-            sat_exp_lst = []
-            for sat in mn_sats:
-                sat.nuc = exp
-                sat_exp_lst.append(gen_exp(sat))
-            exp = 'convergence(' + ','.join(sat_exp_lst) + ')'
 
+        elif len(mn_sats) > 1:  # converge
+            sat_exp_lst = []
+            for r in mn_sats:
+                r.nuc = exp
+                if r.type == 'multinuc':
+                    sat_exp = gen_exp(r)
+                    sat_exp = format_rp(r.rel, sat_exp, r.nuc)
+                    sat_exp_lst.append(sat_exp)   
+                else: 
+                    sat_exp = gen_exp(r)
+                    sat_exp_lst.append(sat_exp)
+            exp = 'convergence(' + ','.join(sat_exp_lst) + ')'
+            debug(pcpp(exp))
     debug(exp)
-    return exp 
+    return exp
 
 ###############################################################
 # print debug when turned on
@@ -216,26 +255,6 @@ def snakify(s): return s.replace('-','_') if s else s
 rplist = []
 top = None
 multinucs = []
-
-########################################
-# handle convergence of multiple sats on a common nucleus.
-# Implementation of convergence is incomplete and the source of known bugs.
-# These are being address in an upcoming release
-
-def converge(rp):
-    children = get_children(rp)
-    nucexp = None
-    exp = ''
-    for r in children:
-        if r.rel == 'span':
-            nucid = r.nuc
-            nucexp = gen_exp(r)
-            continue
-        exp += '{},'.format(gen_exp(r))
-    if nucexp:
-        exp = exp.replace(nucid, nucexp)
-    exp = "convergence(" + exp[:-1] + ')'
-    return exp
 
 ########################################
 ## sequentialize segment numbering
