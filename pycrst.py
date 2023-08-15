@@ -19,7 +19,7 @@ import xml.etree.ElementTree as ET
 import re
 import sys
 from pcpp import pcpp
-debugging = False
+debugging = True
 
 # Uncomment input file of interest
 # selected classics and miscellaneous
@@ -153,7 +153,7 @@ def gen_exp(rp):
                         exp_list.append(format_rp(child)) 
                 
             exp = 'convergence(' + ','.join(exp_list) + ')'
-            debug(pcpp(exp))
+
 
         else:
             nuc_exp = gen_exp(get_span_nuc(rp))
@@ -182,8 +182,9 @@ def gen_exp(rp):
                 else:
                     exp = format_rp(child)
                 exp_list.append(exp)
+
             exp = 'convergence(' + ','.join(exp_list) + ')'
-            debug(pcpp(exp))
+
         else:
             sat = get_sat(rp)
             if not sat:
@@ -232,9 +233,9 @@ def gen_exp(rp):
                 else: 
                     sat_exp = gen_exp(r)
                     sat_exp_lst.append(sat_exp)
+
             exp = 'convergence(' + ','.join(sat_exp_lst) + ')'
-            debug(pcpp(exp))
-    debug(exp)
+
     return exp
 
 ###############################################################
