@@ -187,7 +187,7 @@ def gen_exp(rp):
             elif sat.type == 'multinuc':
                 exp = format_rp(sat.rel, gen_exp(sat), rp.sat)
             else:
-                exp = gen_exp(sat)  # when does this happen?
+                exp = gen_exp(sat)  
 
     elif rp.type == 'multinuc':
         nucs = get_mn_nucs(rp)       
