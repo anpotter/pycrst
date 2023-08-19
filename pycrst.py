@@ -19,7 +19,7 @@ import xml.etree.ElementTree as ET
 import re
 import sys
 from pcpp import pcpp
-debugging = True
+debugging = False
 
 # Uncomment input file of interest
 # selected classics and miscellaneous
@@ -30,7 +30,6 @@ rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/musicdayannouncement.rs3'
 #rstFile = './rstFiles/syncom.rs3'
 #rstFile = './rstFiles/taxprogram.rs3'
-#rstFile = './rstFiles/thumbsextended.rs3'
 #rstFile = './rstFiles/truebrit.rs3'
 #rstFile = './rstFiles/unlazy.rs3'
 #rstFile = './rstFiles/zpg.rs3' # discontinuity OK, see unconnected segs 1-4
@@ -131,11 +130,10 @@ def initialize(rstFile):
 
 def gen_exp(rp):
     
-    if is_top(rp) and is_span_type(rp):
-        return gen_exp(get_nuc(rp.sat))
+    if rp.rel == 'top' and rp.type == 'span':    
+        exp = gen_exp(get_nuc(rp.sat))
         
-    elif is_span_type(rp):
-        
+    elif rp.type == 'span':
         if get_sat_count(rp) > 1:   # converge
             nuc_exp = gen_exp(get_span_nuc(rp))
             exp_list = []
@@ -154,12 +152,11 @@ def gen_exp(rp):
                 
             exp = 'convergence(' + ','.join(exp_list) + ')'
 
-
         else:
             nuc_exp = gen_exp(get_span_nuc(rp))
             sat = get_sat(rp)
             if sat:
-                if is_multi_type(sat):
+                if sat.type == 'multinuc':
                     sat.nuc = nuc_exp
                     exp = format_rp(sat.rel,gen_exp(sat),nuc_exp)
                 else:
@@ -170,7 +167,7 @@ def gen_exp(rp):
             else:
                 exp = format_rp(rp.rel, nuc_exp, rp.nuc)
 
-    elif is_segment(rp):
+    elif rp.type == 'segment':
         if get_sat_count(rp) > 1:   # converge
             exp_list = []
             children = get_children(rp)
@@ -182,26 +179,24 @@ def gen_exp(rp):
                 else:
                     exp = format_rp(child)
                 exp_list.append(exp)
-
             exp = 'convergence(' + ','.join(exp_list) + ')'
-
         else:
             sat = get_sat(rp)
             if not sat:
                 exp = format_rp(rp)
-            elif is_multi_type(sat):
+            elif sat.type == 'multinuc':
                 exp = format_rp(sat.rel, gen_exp(sat), rp.sat)
             else:
-                exp = gen_exp(sat)
+                exp = gen_exp(sat)  # when does this happen?
 
-    elif is_multi_type(rp):
+    elif rp.type == 'multinuc':
         nucs = get_mn_nucs(rp)       
         nuc_exp_lst = []            # create list of nuclei rps
         for n in nucs:
-            if is_span_type(n):
+            if n.type == 'span':
                 exp = gen_exp(get_children(n)[0])
                 nuc_exp_lst.append(exp)
-            elif is_multi_type(n):  # multinuc within multinuc
+            elif n.type == 'multinuc':  # multinuc within multinuc
                 exp = gen_exp(n)
                 nuc_exp_lst.append(exp)
             else:
@@ -214,11 +209,11 @@ def gen_exp(rp):
         
         if len(mn_sats) == 1:
             mn_sats[0].nuc = exp
-            if is_segment(mn_sats[0]):
+            if mn_sats[0].type == 'segment':
                 exp = format_rp(mn_sats[0])
             else:
                 exp = gen_exp(mn_sats[0])
-                if not is_span_type(mn_sats[0]):
+                if not mn_sats[0].type == 'span':
                     mn_sats[0].sat = exp
                     exp = format_rp(mn_sats[0])
 
@@ -233,9 +228,9 @@ def gen_exp(rp):
                 else: 
                     sat_exp = gen_exp(r)
                     sat_exp_lst.append(sat_exp)
-
             exp = 'convergence(' + ','.join(sat_exp_lst) + ')'
 
+    debug(exp)
     return exp
 
 ###############################################################
