@@ -4,6 +4,9 @@ Azar Score
 Computing an RST Metric
 Simple 'hello world' example of relational proposition as Python
 
+Citation:
+Potter, A. (Accepted). An algorithm for pythonizing rhetorical structures. In DiSLiDaS 2023. 
+
 For more info:
 Moshe Azar. 1999. Argumentative text as rhetorical structure:
 An application of rhetorical structure theory.
@@ -14,28 +17,24 @@ import sys
 azar = 0
 nonazar = 0
 
-def argumentative():
-    global azar
-    azar += 1
-
-def nonargumentative():
-    global nonazar
-    nonazar += 1
-
-arg_rels = ['antithesis', 'concession',
-            'evidence', 'motivation',
-            'justify']
+arg_rels = ['antithesis', 'concession','evidence',
+            'motivation', 'justify']
 
 def tally(argv):
+    global azar
+    global nonazar
+
     relname = sys._getframe(1).f_code.co_name
-    argumentative() if relname in arg_rels else nonargumentative()
+    if relname in arg_rels:
+        azar += 1
+    else:
+        nonazar += 1
     return relname
 
 def antithesis(*argv): return tally(argv), argv
 def background(*argv): return tally(argv), argv
 def circumstance(*argv): return tally(argv), argv
 def concession(*argv): return tally(argv), argv
-def condition(*argv): return tally(argv), argv
 def condition(*argv): return tally(argv), argv
 def conjunction(*argv): return tally(argv), argv
 def contrast(*argv): return tally(argv), argv
