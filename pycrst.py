@@ -134,8 +134,8 @@ def gen_exp(rp):
         exp = gen_exp(get_nuc(rp.sat))
         
     elif rp.type == 'span':
+        nuc_exp = gen_exp(get_span_nuc(rp))
         if get_sat_count(rp) > 1:   # converge
-            nuc_exp = gen_exp(get_span_nuc(rp))
             exp_list = []
             children = get_children(rp)
             for child in children:
@@ -153,7 +153,6 @@ def gen_exp(rp):
             exp = 'convergence(' + ','.join(exp_list) + ')'
 
         else:
-            nuc_exp = gen_exp(get_span_nuc(rp))
             sat = get_sat(rp)
             if sat:
                 if sat.type == 'multinuc':
@@ -187,7 +186,7 @@ def gen_exp(rp):
             elif sat.type == 'multinuc':
                 exp = format_rp(sat.rel, gen_exp(sat), rp.sat)
             else:
-                exp = gen_exp(sat)  
+                exp = gen_exp(sat)
 
     elif rp.type == 'multinuc':
         nucs = get_mn_nucs(rp)       
