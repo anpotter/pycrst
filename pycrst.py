@@ -70,7 +70,7 @@ rstFile = './rstFiles/ccletter.rs3'
 # selected GUM
 #rstFile = './rstFiles/GUM/GUM_news_worship.rs3'
 #rstFile = './rstFiles/GUM/GUM_news_worship_2.rs3'
-#rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
+rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
           
 ##################################################################
 ## relational proposition, generally known as rp
@@ -221,12 +221,9 @@ def gen_exp(rp):
             for r in mn_sats:
                 r.nuc = exp
                 if r.type == 'multinuc':
-                    sat_exp = gen_exp(r)
-                    sat_exp = format_rp(r.rel, sat_exp, r.nuc)
-                    sat_exp_lst.append(sat_exp)   
+                    sat_exp_lst.append(format_rp(r.rel, gen_exp(r), r.nuc))
                 else: 
-                    sat_exp = gen_exp(r)
-                    sat_exp_lst.append(sat_exp)
+                    sat_exp_lst.append(gen_exp(r))
             exp = 'convergence(' + ','.join(sat_exp_lst) + ')'
 
     debug(exp)
