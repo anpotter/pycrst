@@ -28,7 +28,7 @@ rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/dioxin.rs3'
 #rstFile = './rstFiles/emeritiCommittee.rs3'
 #rstFile = './rstFiles/musicdayannouncement.rs3'
-#rstFile = './rstFiles/syncom.rs3'
+rstFile = './rstFiles/syncom.rs3'
 #rstFile = './rstFiles/taxprogram.rs3'
 #rstFile = './rstFiles/truebrit.rs3'
 #rstFile = './rstFiles/unlazy.rs3'
@@ -70,7 +70,7 @@ rstFile = './rstFiles/ccletter.rs3'
 # selected GUM
 #rstFile = './rstFiles/GUM/GUM_news_worship.rs3'
 #rstFile = './rstFiles/GUM/GUM_news_worship_2.rs3'
-rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
+#rstFile = './rstFiles/GUM/GUM_academic_census.rs3'
           
 ##################################################################
 ## relational proposition, generally known as rp
@@ -193,11 +193,9 @@ def gen_exp(rp):
         nuc_exp_lst = []            # create list of nuclei rps
         for n in nucs:
             if n.type == 'span':
-                exp = gen_exp(get_children(n)[0])
-                nuc_exp_lst.append(exp)
+                nuc_exp_lst.append(gen_exp(get_children(n)[0]))
             elif n.type == 'multinuc':  # multinuc within multinuc
-                exp = gen_exp(n)
-                nuc_exp_lst.append(exp)
+                nuc_exp_lst.append(gen_exp(n))
             else:
                 nuc_exp_lst.append(n.sat)
 
