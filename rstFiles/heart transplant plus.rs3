@@ -1,0 +1,87 @@
+<rst>
+  <header>
+    <relations>
+      <rel name="antithesis" type="rst" />
+      <rel name="background" type="rst" />
+      <rel name="circumstance" type="rst" />
+      <rel name="concession" type="rst" />
+      <rel name="condition" type="rst" />
+      <rel name="elaboration" type="rst" />
+      <rel name="enablement" type="rst" />
+      <rel name="evaluation" type="rst" />
+      <rel name="evidence" type="rst" />
+      <rel name="interpretation" type="rst" />
+      <rel name="justify" type="rst" />
+      <rel name="means" type="rst" />
+      <rel name="motivation" type="rst" />
+      <rel name="nonvolitional-cause" type="rst" />
+      <rel name="nonvolitional-result" type="rst" />
+      <rel name="otherwise" type="rst" />
+      <rel name="preparation" type="rst" />
+      <rel name="purpose" type="rst" />
+      <rel name="restatement" type="rst" />
+      <rel name="solutionhood" type="rst" />
+      <rel name="summary" type="rst" />
+      <rel name="unconditional" type="rst" />
+      <rel name="unless" type="rst" />
+      <rel name="unstated-relation" type="rst" />
+      <rel name="volitional-cause" type="rst" />
+      <rel name="volitional-result" type="rst" />
+      <rel name="cause" type="rst" />
+      <rel name="result" type="rst" />
+      <rel name="rst" type="rst" />
+      <rel name="propositional-attitude" type="rst" />
+      <rel name="attribution" type="rst" />
+      <rel name="rst" type="rst" />
+      <rel name="reason" type="rst" />
+      <rel name="rst" type="rst" />
+      <rel name="" type="rst" />
+      <rel name="conjunction" type="multinuc" />
+      <rel name="contrast" type="multinuc" />
+      <rel name="disjunction" type="multinuc" />
+      <rel name="joint" type="multinuc" />
+      <rel name="list" type="multinuc" />
+      <rel name="restatement-mn" type="multinuc" />
+      <rel name="sequence" type="multinuc" />
+      <rel name="same-unit" type="multinuc" />
+    </relations>
+  </header>
+  <body>
+    <segment id="1" parent="13" relname="concession">Induction is always permissible,</segment>
+    <segment id="14" parent="13" relname="span"> but the credibility of the induced general law depends on its scope S:</segment>
+    <segment id="15" parent="16" relname="condition"> the further S reaches into the future,</segment>
+    <segment id="16" parent="11" relname="span"> the less we trust the law.</segment>
+    <segment id="17" parent="8" relname="span"> So, there is a credibility of an induced ‘general law’</segment>
+    <segment id="18" parent="26" relname="span"> – and in addition this credibility is affected by further evidence.</segment>
+    <segment id="19" parent="12" relname="span"> 
+
+The law will gain credit </segment>
+    <segment id="2" parent="10" relname="disjunction">
+if the person under consideration has not just survived a heart transplantation and is not nursed in an intensive care unit </segment>
+    <segment id="3" parent="10" relname="disjunction">
+or if he does not live in a country at war.</segment>
+    <segment id="4" parent="24" relname="conjunction">
+But even if all those circumstances are in favor of the person</segment>
+    <segment id="23" parent="24" relname="conjunction"> and we limit the duration of the scope S of the law to say, a second, </segment>
+    <segment id="5" parent="21" relname="span">
+the law may become extremely credible, </segment>
+    <segment id="6" parent="20" relname="span">
+but it may still be false, </segment>
+    <segment id="7" parent="6" relname="nonvolitional-cause">
+because the person may die just at that very moment.
+</segment>
+<group id="11" type="span" parent="14" relname="evidence" />
+<group id="13" type="span" parent="9" relname="span" />
+<group id="9" type="span" parent="8" relname="nonvolitional-cause" />
+<group id="8" type="span" parent="27" relname="span" />
+<group id="10" type="multinuc" parent="19" relname="condition" />
+<group id="12" type="span" parent="22" relname="concession" />
+<group id="20" type="span" parent="22" relname="span" />
+<group id="21" type="span" parent="20" relname="concession" />
+<group id="22" type="span" parent="25" relname="span" />
+<group id="24" type="multinuc" parent="5" relname="condition" />
+<group id="25" type="span" parent="18" relname="evidence" />
+<group id="26" type="span" parent="17" relname="elaboration" />
+<group id="27" type="span" />
+  </body>
+</rst>

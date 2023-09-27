@@ -1,0 +1,77 @@
+<rst>
+  <header>
+    <relations>
+      <rel name="antithesis" type="rst" />
+      <rel name="background" type="rst" />
+      <rel name="circumstance" type="rst" />
+      <rel name="concession" type="rst" />
+      <rel name="condition" type="rst" />
+      <rel name="elaboration" type="rst" />
+      <rel name="enablement" type="rst" />
+      <rel name="evaluation" type="rst" />
+      <rel name="evidence" type="rst" />
+      <rel name="interpretation" type="rst" />
+      <rel name="justify" type="rst" />
+      <rel name="means" type="rst" />
+      <rel name="motivation" type="rst" />
+      <rel name="nonvolitional-cause" type="rst" />
+      <rel name="nonvolitional-result" type="rst" />
+      <rel name="otherwise" type="rst" />
+      <rel name="preparation" type="rst" />
+      <rel name="purpose" type="rst" />
+      <rel name="restatement" type="rst" />
+      <rel name="solutionhood" type="rst" />
+      <rel name="summary" type="rst" />
+      <rel name="unconditional" type="rst" />
+      <rel name="unless" type="rst" />
+      <rel name="unstated-relation" type="rst" />
+      <rel name="volitional-cause" type="rst" />
+      <rel name="volitional-result" type="rst" />
+      <rel name="conjunction" type="multinuc" />
+      <rel name="contrast" type="multinuc" />
+      <rel name="disjunction" type="multinuc" />
+      <rel name="joint" type="multinuc" />
+      <rel name="list" type="multinuc" />
+      <rel name="restatement-mn" type="multinuc" />
+      <rel name="sequence" type="multinuc" />
+    </relations>
+  </header>
+  <body>
+    <segment id="1" parent="26" relname="preparation">1) (Overtitle:) True Brit</segment>
+    <segment id="2" parent="8" relname="joint">
+
+2) My wife and I are both British,</segment>
+    <segment id="13" parent="8" relname="joint"> 3) and we enjoy visiting America.</segment>
+    <segment id="7" parent="8" relname="elaboration"> 4) We&apos;re particularly attracted to the landscape and architecture in Arizona.</segment>
+    <segment id="3" parent="23" relname="circumstance">
+
+5) While looking over a Scottsdale, Ariz., model house one day,</segment>
+    <segment id="14" parent="23" relname="span"> 6) my wife was amused by the real-estate agents,</segment>
+    <segment id="15" parent="22" relname="span"> 7) who engaged her in the &quot;you talk kinda funny&quot; conversation.</segment>
+    <segment id="9" parent="15" relname="elaboration">  8) We say &quot;to-mah-to&quot; and Arizonans say &quot;to-may-to.&quot;</segment>
+    <segment id="10" parent="15" relname="elaboration">  9) We call the hood of a car a &quot;bonnet&quot; and the trunk a boot.</segment>
+    <segment id="4" parent="20" relname="circumstance">
+
+10) Then, as my wife entered the dining room,</segment>
+    <segment id="16" parent="19" relname="sequence"> 11) one agent pointed to a massive chandelier and asked</segment>
+    <segment id="18" parent="19" relname="sequence">, 12) &quot;What would you call that in England?&quot;</segment>
+    <segment id="5" parent="20" relname="span">
+
+13) &quot;Ostentatious,&quot; my wife replied.</segment>
+    <segment id="6">
+
+14) extracted from Readers&apos; Digest, September 1999, p. 103,
+(Overtitle:) True Brit, item 3, quoted from Gary Clark in Arizona Highways.</segment>
+<group id="19" type="multinuc" parent="5" relname="solutionhood" />
+<group id="20" type="span" parent="21" relname="span" />
+<group id="21" type="span" parent="25" relname="span" />
+<group id="22" type="span" parent="14" relname="elaboration" />
+<group id="23" type="span" parent="17" relname="span" />
+<group id="8" type="multinuc" parent="11" relname="span" />
+<group id="17" type="span" parent="21" relname="circumstance" />
+<group id="25" type="span" parent="26" relname="span" />
+<group id="26" type="span" parent="27" relname="span" />
+<group id="27" type="span" />
+<group id="11" type="span" parent="25" relname="background" />
+  </body>
+</rst>

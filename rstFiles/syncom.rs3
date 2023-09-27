@@ -1,0 +1,84 @@
+<rst>
+  <header>
+    <relations>
+      <rel name="antithesis" type="rst" />
+      <rel name="background" type="rst" />
+      <rel name="circumstance" type="rst" />
+      <rel name="concession" type="rst" />
+      <rel name="condition" type="rst" />
+      <rel name="elaboration" type="rst" />
+      <rel name="enablement" type="rst" />
+      <rel name="evaluation" type="rst" />
+      <rel name="evidence" type="rst" />
+      <rel name="interpretation" type="rst" />
+      <rel name="justify" type="rst" />
+      <rel name="means" type="rst" />
+      <rel name="motivation" type="rst" />
+      <rel name="nonvolitional-cause" type="rst" />
+      <rel name="nonvolitional-result" type="rst" />
+      <rel name="otherwise" type="rst" />
+      <rel name="preparation" type="rst" />
+      <rel name="purpose" type="rst" />
+      <rel name="restatement" type="rst" />
+      <rel name="solutionhood" type="rst" />
+      <rel name="summary" type="rst" />
+      <rel name="unconditional" type="rst" />
+      <rel name="unless" type="rst" />
+      <rel name="unstated-relation" type="rst" />
+      <rel name="volitional-cause" type="rst" />
+      <rel name="volitional-result" type="rst" />
+      <rel name="cause" type="rst" />
+      <rel name="result" type="rst" />
+      <rel name="" type="rst" />
+      <rel name="conjunction" type="multinuc" />
+      <rel name="contrast" type="multinuc" />
+      <rel name="disjunction" type="multinuc" />
+      <rel name="joint" type="multinuc" />
+      <rel name="list" type="multinuc" />
+      <rel name="restatement-mn" type="multinuc" />
+      <rel name="sequence" type="multinuc" />
+    </relations>
+  </header>
+  <body>
+    <segment id="1" parent="24" relname="solutionhood">1) What if you&apos;re having to clean floppy drive heads too often?</segment>
+    <segment id="2" parent="24" relname="span">
+2) Ask for Syncom diskettes, with burnished Ectype coating and dust absorbing jacket liners.</segment>
+    <segment id="3" parent="17" relname="circumstance">
+3) As your floppy drive writes or reads,</segment>
+    <segment id="4" parent="17" relname="span">
+4) a Syncom diskette is working four ways</segment>
+    <segment id="5" parent="4" relname="purpose">
+5) to keep loose particles and dust from causing soft errors, drop-outs.</segment>
+    <segment id="6" parent="14" relname="span">
+6) Cleaning agents on the burnished surface of the Ectype coatmg actually remove build-up from the head,</segment>
+    <segment id="7" parent="6" relname="circumstance">
+7) while lubricating it at the same time.</segment>
+    <segment id="8" parent="9" relname="antithesis">
+8) A carbon additive drains away static electricity.</segment>
+    <segment id="9" parent="20" relname="span">
+9) before it can attract dust or lint.</segment>
+    <segment id="10" parent="18" relname="elaboration">
+10) Strong binders hold the signal-carrying oxides tightly wtthin the coating.</segment>
+    <segment id="12" parent="21" relname="span">
+11) And the non-woven jacket liner, [12] provides thousands of tiny pockets to keep what it collects</segment>
+    <segment id="11" parent="12" relname="antithesis">
+12) more than just wiping the surface,</segment>
+    <segment id="13" parent="19" relname="purpose">
+13) To see which Syncom diskette will replace the ones you re usmg now,</segment>
+    <segment id="15" parent="19" relname="span">
+14) send for our free &apos;Flexi-Finder&apos; selection guide and the name of the supplier
+nearest you.</segment>
+    <segment id="16" parent="15" relname="enablement">
+15) Syncom, Box 130, Mitchell, SD 57301. 800-843-9862; 605-996-8200</segment>
+<group id="17" type="span" parent="18" relname="span" />
+<group id="18" type="span" parent="22" relname="span" />
+<group id="19" type="span" parent="23" relname="span" />
+<group id="14" type="span" parent="18" relname="elaboration" />
+<group id="20" type="span" parent="18" relname="elaboration" />
+<group id="21" type="span" parent="18" relname="elaboration" />
+<group id="22" type="span" parent="2" relname="motivation" />
+<group id="23" type="span" parent="2" relname="enablement" />
+<group id="24" type="span" parent="25" relname="span" />
+<group id="25" type="span" />
+  </body>
+</rst>
