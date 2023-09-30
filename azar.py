@@ -47,7 +47,7 @@ def evidence(*argv): return tally(argv), argv
 def interpretation(*argv): return tally(argv), argv
 def joint(*argv): return tally(argv), argv
 def justify(*argv): return tally(argv), argv
-def list(*argv): return tally(argv), argv
+def list_(*argv): return tally(argv), argv
 def means(*argv): return tally(argv), argv
 def motivation(*argv): return tally(argv), argv
 def nonvolitional_cause(*argv): return tally(argv), argv
