@@ -30,6 +30,7 @@ rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/musicdayannouncement.rs3'
 #rstFile = './rstFiles/syncom.rs3'
 #rstFile = './rstFiles/taxprogram.rs3'
+#rstFile = './rstFiles/taxprogramv2.rs3'
 #rstFile = './rstFiles/truebrit.rs3'
 #rstFile = './rstFiles/unlazy.rs3'
 #rstFile = './rstFiles/zpg.rs3' # discontinuity OK, see unconnected segs 1-4
@@ -129,7 +130,8 @@ def initialize(rstFile):
 # Transform RST to RP 
 
 def gen_exp(rp):
-    
+
+    debug(format_rp(rp))
     if rp.rel == 'top' and rp.type == 'span':    
         exp = gen_exp(get_nuc(rp.sat))
         
@@ -241,7 +243,9 @@ def is_multi_type(rp): return rp.type == 'multinuc'
 def is_segment(rp): return rp.type == 'segment'
 def is_multi_rel(rp): return rp.rel in multinucs
 def is_top(rp): return rp.rel == 'top'
-def snakify(s): return s.replace('-','_') if s else s
+def snakify(s):
+    s = 'list_' if s == 'list' else s
+    return s.replace('-','_') if s else s
 rplist = []
 top = None
 multinucs = []
