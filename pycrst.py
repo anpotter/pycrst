@@ -19,7 +19,7 @@ import xml.etree.ElementTree as ET
 import re
 import sys
 from pcpp import pcpp
-debugging = False
+debugging = True
 
 # Uncomment input file of interest
 # selected classics and miscellaneous
@@ -34,7 +34,6 @@ rstFile = './rstFiles/ccletter.rs3'
 #rstFile = './rstFiles/truebrit.rs3'
 #rstFile = './rstFiles/unlazy.rs3'
 #rstFile = './rstFiles/zpg.rs3' # discontinuity OK, see unconnected segs 1-4
-#rstFile = './rstFiles/Gettysburg Address.rs3'
 
 # STS Corpus
 #rstFile = './rstFiles/sts corpus/STS-Nov-M133-Fuller.rs3'
@@ -131,7 +130,6 @@ def initialize(rstFile):
 
 def gen_exp(rp):
 
-    debug(format_rp(rp))
     if rp.rel == 'top' and rp.type == 'span':    
         exp = gen_exp(get_nuc(rp.sat))
         
@@ -226,7 +224,6 @@ def gen_exp(rp):
                     sat_exp_lst.append(gen_exp(r))
             exp = 'convergence(' + ','.join(sat_exp_lst) + ')'
 
-    debug(exp)
     return exp
 
 ###############################################################
